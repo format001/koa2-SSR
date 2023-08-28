@@ -24,6 +24,7 @@
     "eslint-config-airbnb-base": "^5.0.2"
   },
   "scripts": {
-    "start": "babel-node ./bin/run"
+    "start": "babel-node ./bin/run",
+    "dev": "nodemon --exec babel-node ./server.js"
   }
 }

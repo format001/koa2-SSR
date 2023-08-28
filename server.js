@@ -9,7 +9,6 @@ import finalHandler from './lib/middlewares/finalHandler';
 import router from './router';
 
 const app = new Koa();
-
 app.use(finalHandler());
 app.use(views(`${__dirname}/views`, {
   map: {
@@ -21,8 +20,14 @@ app.use(bodyParser());
 app.keys = ['some secret hurr'];
 app.use(convert(session(app)));
 app.use(serve(__dirname + '/public'));
-app
-  .use(router.routes())
+app.use(router.routes())
   .use(router.allowedMethods());
 
-export default app;
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`);
+});
+// export default app;
+
+
