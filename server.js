@@ -7,10 +7,9 @@ import convert from 'koa-convert';
 import serve from 'koa-static';
 
 import finalHandler from './lib/middlewares/finalHandler';
-import router from './router';
+import router from './routes';
 
 const app = new Koa();
-
 
 app.use(finalHandler());
 app.use(views(`${__dirname}/views`, {
@@ -25,6 +24,9 @@ app.use(convert(session(app)));
 app.use(serve(__dirname + '/public'));
 app.use(router.routes())
   .use(router.allowedMethods());
+
+
+
 
 const PORT = 3000;
 app.listen(PORT, () => {
